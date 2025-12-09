@@ -194,8 +194,10 @@ class ImageDataset(dataset.Dataset):
         self.augment = augment
         self.image_list = list_file_tree(os.path.join(data_path), "png")
         self.image_list += list_file_tree(os.path.join(data_path), "jpg")
+        self.image_list += list_file_tree(os.path.join(data_path), "tif")
         self.seg_list = list_file_tree(os.path.join(seg_path), "png")
         self.seg_list += list_file_tree(os.path.join(seg_path), "jpg")
+        self.seg_list += list_file_tree(os.path.join(seg_path), "tif")
 
         assert len(self.image_list) == len(self.seg_list)
         self.image_list.sort()
@@ -229,6 +231,7 @@ class SingleImage(dataset.Dataset):
         self.augment = augment
         self.image_list = list_file_tree(os.path.join(data_path), "png")
         self.image_list += list_file_tree(os.path.join(data_path), "jpg")
+        self.image_list += list_file_tree(os.path.join(data_path), "tif")
         # assert len(self.image_list) == len(self.cyt_list)
         self.image_list.sort()
 
